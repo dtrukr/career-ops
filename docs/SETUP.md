@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - [Claude Code](https://claude.ai/code) installed and configured
-- Node.js 18+ (for PDF generation and utility scripts)
+- Node.js 20+ (for PDF generation and utility scripts)
 - (Optional) Go 1.21+ (for the dashboard TUI)
 
 ## Quick Start (5 steps)
@@ -14,7 +14,7 @@
 git clone https://github.com/santifer/career-ops.git
 cd career-ops
 npm install
-npx playwright install chromium   # Required for PDF generation
+npx cloakbrowser install          # Required for PDF generation
 ```
 
 ### 2. Configure your profile

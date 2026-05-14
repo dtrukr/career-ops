@@ -17,9 +17,9 @@
   <img src="https://img.shields.io/badge/OpenCode-111827?style=flat&logo=terminal&logoColor=white" alt="OpenCode">
   <img src="https://img.shields.io/badge/Gemini_CLI-4285F4?style=flat&logo=google&logoColor=white" alt="Gemini CLI">
   <img src="https://img.shields.io/badge/Codex_(soon)-6B7280?style=flat&logo=openai&logoColor=white" alt="Codex">
-  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Node.js_20+-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js 20+">
   <img src="https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white" alt="Go">
-  <img src="https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white" alt="Playwright">
+  <img src="https://img.shields.io/badge/CloakBrowser-111827?style=flat&logo=googlechrome&logoColor=white" alt="CloakBrowser">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT">
   <a href="TRADEMARK.md"><img src="https://img.shields.io/badge/Trademark-Policy-blue.svg" alt="Trademark Policy"></a>
   <a href="https://discord.gg/8pRpHETxa4"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord"></a>
@@ -84,7 +84,7 @@ Built by someone who used it to evaluate 740+ job offers, generate 100+ tailored
 # 1. Clone and install
 git clone https://github.com/santifer/career-ops.git
 cd career-ops && npm install
-npx playwright install chromium   # Required for PDF generation
+npx cloakbrowser install          # Required for PDF generation
 
 # 2. Check setup
 npm run doctor                     # Validates all prerequisites
@@ -265,13 +265,13 @@ career-ops/
 ## Tech Stack
 
 ![Claude Code](https://img.shields.io/badge/Claude_Code-000?style=flat&logo=anthropic&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white)
+![Node.js 20+](https://img.shields.io/badge/Node.js_20+-339933?style=flat&logo=node.js&logoColor=white)
+![CloakBrowser](https://img.shields.io/badge/CloakBrowser-111827?style=flat&logo=googlechrome&logoColor=white)
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
 ![Bubble Tea](https://img.shields.io/badge/Bubble_Tea-FF75B5?style=flat&logo=go&logoColor=white)
 
 - **Agent**: Claude Code with custom skills and modes
-- **PDF**: Playwright/Puppeteer + HTML template
+- **PDF**: CloakBrowser + HTML template
 - **Scanner**: Playwright + Greenhouse API + WebSearch
 - **Dashboard**: Go + Bubble Tea + Lipgloss (Catppuccin Mocha theme)
 - **Data**: Markdown tables + YAML config + TSV batch files

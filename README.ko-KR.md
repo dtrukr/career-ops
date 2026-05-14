@@ -79,7 +79,7 @@ Career-ops는 에이전트 기반으로 작동합니다: Claude Code가 Playwrig
 # 1. 클론 및 설치
 git clone https://github.com/santifer/career-ops.git
 cd career-ops && npm install
-npx playwright install chromium   # PDF 렌더링을 위한 브라우저 엔진 설치
+npx cloakbrowser install          # PDF 렌더링을 위한 브라우저 엔진 설치
 
 # 2. 설정 확인
 npm run doctor                     # 모든 사전 요구사항 및 환경 변수 검증
@@ -218,7 +218,7 @@ career-ops/
 ![Bubble Tea](https://img.shields.io/badge/Bubble_Tea-FF75B5?style=flat&logo=go&logoColor=white)
 
 - **에이전트**: Claude Code + 커스텀 스킬 및 모드
-- **PDF**: Playwright/Puppeteer + HTML 템플릿
+- **PDF**: CloakBrowser + HTML 템플릿
 - **스캐너**: Playwright + Greenhouse API + WebSearch
 - **대시보드**: Go + Bubble Tea + Lipgloss (Catppuccin Mocha 테마)
 - **데이터**: Markdown 테이블 + YAML 설정 + TSV 배치 파일

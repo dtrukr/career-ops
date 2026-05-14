@@ -77,7 +77,7 @@ Construido por alguien que lo uso para evaluar 740+ ofertas, generar 100+ CVs pe
 # 1. Clonar e instalar
 git clone https://github.com/santifer/career-ops.git
 cd career-ops && npm install
-npx playwright install chromium   # Necesario para generar PDFs
+npx cloakbrowser install          # Necesario para generar PDFs
 
 # 2. Verificar setup
 npm run doctor                     # Valida todos los prerequisitos
@@ -216,7 +216,7 @@ career-ops/
 ![Bubble Tea](https://img.shields.io/badge/Bubble_Tea-FF75B5?style=flat&logo=go&logoColor=white)
 
 - **Agente**: Claude Code con skills y modos personalizados
-- **PDF**: Playwright/Puppeteer + template HTML
+- **PDF**: CloakBrowser + template HTML
 - **Scanner**: Playwright + Greenhouse API + WebSearch
 - **Dashboard**: Go + Bubble Tea + Lipgloss (tema Catppuccin Mocha)
 - **Datos**: Tablas Markdown + config YAML + ficheros TSV batch

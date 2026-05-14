@@ -82,7 +82,7 @@ career-ops 具备代理式工作能力：Claude Code 会用 Playwright 浏览招
 # 1. 克隆并安装
 git clone https://github.com/santifer/career-ops.git
 cd career-ops && npm install
-npx playwright install chromium   # 生成 PDF 所需
+npx cloakbrowser install          # 生成 PDF 所需
 
 # 2. 检查环境
 npm run doctor                     # 验证所有前置条件
@@ -221,7 +221,7 @@ career-ops/
 ![Bubble Tea](https://img.shields.io/badge/Bubble_Tea-FF75B5?style=flat&logo=go&logoColor=white)
 
 - **代理**：Claude Code，配合自定义技能与 modes
-- **PDF**：Playwright/Puppeteer + HTML 模板
+- **PDF**：CloakBrowser + HTML 模板
 - **扫描器**：Playwright + Greenhouse API + WebSearch
 - **Dashboard**：Go + Bubble Tea + Lipgloss（Catppuccin Mocha 主题）
 - **数据**：Markdown 表格 + YAML 配置 + TSV 批处理文件

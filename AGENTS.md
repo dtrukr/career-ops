@@ -56,7 +56,7 @@ AI-powered, CLI-agnostic job search automation: pipeline tracking, offer evaluat
 | `portals.yml` | Query and company config |
 | `templates/cv-template.html` | HTML template for CVs |
 | `templates/cv-template.tex` | LaTeX/Overleaf template for CVs |
-| `generate-pdf.mjs` | Playwright: HTML to PDF |
+| `generate-pdf.mjs` | CloakBrowser: HTML to PDF |
 | `generate-latex.mjs` | LaTeX CV validator + pdflatex compiler |
 | `article-digest.md` | Compact proof points from portfolio (optional) |
 | `interview-prep/story-bank.md` | Accumulated STAR+R stories across evaluations |

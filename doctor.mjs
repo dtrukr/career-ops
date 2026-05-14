@@ -20,13 +20,13 @@ const dim = (s) => isTTY ? `\x1b[2m${s}\x1b[0m` : s;
 
 function checkNodeVersion() {
   const major = parseInt(process.versions.node.split('.')[0]);
-  if (major >= 18) {
-    return { pass: true, label: `Node.js >= 18 (v${process.versions.node})` };
+  if (major >= 20) {
+    return { pass: true, label: `Node.js >= 20 (v${process.versions.node})` };
   }
   return {
     pass: false,
-    label: `Node.js >= 18 (found v${process.versions.node})`,
-    fix: 'Install Node.js 18 or later from https://nodejs.org',
+    label: `Node.js >= 20 (found v${process.versions.node})`,
+    fix: 'Install Node.js 20 or later from https://nodejs.org',
   };
 }
 
@@ -41,23 +41,23 @@ function checkDependencies() {
   };
 }
 
-async function checkPlaywright() {
+async function checkCloakBrowser() {
   try {
-    const { chromium } = await import('playwright');
-    const execPath = chromium.executablePath();
+    const { ensureBinary } = await import('cloakbrowser');
+    const execPath = await ensureBinary();
     if (existsSync(execPath)) {
-      return { pass: true, label: 'Playwright chromium installed' };
+      return { pass: true, label: 'CloakBrowser Chromium installed' };
     }
     return {
       pass: false,
-      label: 'Playwright chromium not installed',
-      fix: 'Run: npx playwright install chromium',
+      label: 'CloakBrowser Chromium not installed',
+      fix: 'Run: npx cloakbrowser install',
     };
   } catch {
     return {
       pass: false,
-      label: 'Playwright chromium not installed',
-      fix: 'Run: npx playwright install chromium',
+      label: 'CloakBrowser Chromium not installed',
+      fix: 'Run: npx cloakbrowser install',
     };
   }
 }
@@ -156,7 +156,7 @@ async function main() {
   const checks = [
     checkNodeVersion(),
     checkDependencies(),
-    await checkPlaywright(),
+    await checkCloakBrowser(),
     checkCv(),
     checkProfile(),
     checkPortals(),

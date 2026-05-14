@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 /**
- * check-liveness.mjs — Playwright job link liveness checker
+ * check-liveness.mjs — CloakBrowser job link liveness checker
  *
  * Tests whether job posting URLs are still active or have expired.
  * Uses the same detection logic as scan.md step 7.5.
- * Zero Claude API tokens — pure Playwright.
+ * Zero Claude API tokens — pure CloakBrowser.
  *
  * Usage:
  *   node check-liveness.mjs <url1> [url2] ...
@@ -14,7 +14,7 @@
  * Exit code: 0 if all active, 1 if any expired or uncertain
  */
 
-import { chromium } from 'playwright';
+import { launch } from 'cloakbrowser';
 import { readFile } from 'fs/promises';
 import { classifyLiveness } from './liveness-core.mjs';
 
@@ -88,7 +88,7 @@ async function main() {
 
   console.log(`Checking ${urls.length} URL(s)...\n`);
 
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launch({ headless: true });
   const page = await browser.newPage();
 
   let active = 0, expired = 0, uncertain = 0;

@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 /**
- * generate-pdf.mjs — HTML → PDF via Playwright
+ * generate-pdf.mjs — HTML → PDF via CloakBrowser
  *
  * Usage:
  *   node career-ops/generate-pdf.mjs <input.html> <output.pdf> [--format=letter|a4]
  *
- * Requires: @playwright/test (or playwright) installed.
- * Uses Chromium headless to render the HTML and produce a clean, ATS-parseable PDF.
+ * Requires: cloakbrowser and playwright-core installed.
+ * Uses CloakBrowser Chromium headless to render the HTML and produce a clean, ATS-parseable PDF.
  */
 
-import { chromium } from 'playwright';
+import { launch } from 'cloakbrowser';
 import { resolve, dirname } from 'path';
 import { readFile } from 'fs/promises';
 import { mkdirSync } from 'fs';
@@ -133,18 +133,22 @@ async function generatePDF() {
     console.log(`🧹 ATS normalization: ${totalReplacements} replacements (${breakdown})`);
   }
 
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launch({ headless: true });
   try {
     const page = await browser.newPage();
 
-    // Set content with file base URL for any relative resources
-    await page.setContent(html, {
-      waitUntil: 'networkidle',
-      baseURL: `file://${dirname(inputPath)}/`,
+    // Navigate to an in-memory document. CloakBrowser can hang on page.setContent()
+    // with file-backed resources, while data URLs keep the render path deterministic.
+    await page.goto(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`, {
+      waitUntil: 'domcontentloaded',
+      timeout: 30000,
     });
 
     // Wait for fonts to load
-    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(() => Promise.race([
+      document.fonts.ready,
+      new Promise((resolve) => setTimeout(resolve, 5000)),
+    ]));
 
     // Generate PDF
     const pdfBuffer = await page.pdf({

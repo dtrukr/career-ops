@@ -48,7 +48,7 @@ Career-Ops превращает любой AI-CLI в полноценный ко
 # 1. Клонируй и установи
 git clone https://github.com/santifer/career-ops.git
 cd career-ops && npm install
-npx playwright install chromium   # Для генерации PDF
+npx cloakbrowser install          # Для генерации PDF
 
 # 2. Проверь настройки
 npm run doctor                     # Валидация всех зависимостей

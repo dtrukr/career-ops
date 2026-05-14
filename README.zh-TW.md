@@ -81,7 +81,7 @@ career-ops 具有代理能力：Claude Code 透過 Playwright 瀏覽求職頁面
 # 1. 複製並安裝
 git clone https://github.com/santifer/career-ops.git
 cd career-ops && npm install
-npx playwright install chromium   # PDF 生成所需
+npx cloakbrowser install          # PDF 生成所需
 
 # 2. 檢查設定
 npm run doctor                     # 驗證所有必要條件
@@ -221,7 +221,7 @@ career-ops/
 ![Bubble Tea](https://img.shields.io/badge/Bubble_Tea-FF75B5?style=flat&logo=go&logoColor=white)
 
 - **代理**：Claude Code，附自訂技能與模式
-- **PDF**：Playwright/Puppeteer + HTML 範本
+- **PDF**：CloakBrowser + HTML 範本
 - **掃描器**：Playwright + Greenhouse API + WebSearch
 - **儀表板**：Go + Bubble Tea + Lipgloss（Catppuccin Mocha 主題）
 - **資料**：Markdown 表格 + YAML 設定 + TSV 批次檔案

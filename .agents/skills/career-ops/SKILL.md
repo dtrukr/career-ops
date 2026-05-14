@@ -3,7 +3,7 @@ name: career-ops
 description: AI job search command center -- evaluate offers, generate CVs, scan portals, track applications
 arguments: mode # Claude Code specific
 user-invocable: true
-argument-hint: "[scan | deep | pdf | oferta | ofertas | apply | batch | tracker | pipeline | contacto | training | project | interview-prep | update]"
+argument-hint: "[scan | deep | pdf | oferta/tilbud | ofertas | apply/ansoeg | batch | tracker | pipeline | contacto | training | project | interview-prep | update]"
 license: MIT
 ---
 
@@ -18,6 +18,7 @@ Determine the mode from `$mode`:
 | (empty / no args) | `discovery` -- Show command menu |
 | JD text or URL (no sub-command) | **`auto-pipeline`** |
 | `oferta` | `oferta` |
+| `tilbud` | `oferta` with Danish mode file `modes/da/tilbud.md` |
 | `ofertas` | `ofertas` |
 | `contacto` | `contacto` |
 | `deep` | `deep` |
@@ -28,6 +29,7 @@ Determine the mode from `$mode`:
 | `tracker` | `tracker` |
 | `pipeline` | `pipeline` |
 | `apply` | `apply` |
+| `ansoeg` / `ansøg` | `apply` with Danish mode file `modes/da/ansoeg.md` |
 | `scan` | `scan` |
 | `batch` | `batch` |
 | `patterns` | `patterns` |
@@ -74,6 +76,22 @@ Or paste a JD directly to run the full pipeline.
 
 After determining the mode, load the necessary files before executing:
 
+### Language-specific modes:
+Before loading context, check whether `config/profile.yml` contains `language.modes_dir` or whether the user explicitly asked for a locale-specific mode.
+
+Supported locale directories:
+
+| Locale | Directory | Evaluation | Apply | Pipeline |
+|--------|-----------|------------|-------|----------|
+| Danish / Denmark | `modes/da` | `tilbud.md` | `ansoeg.md` | `pipeline.md` |
+| German / DACH | `modes/de` | `angebot.md` | `bewerben.md` | `pipeline.md` |
+| French | `modes/fr` | `offre.md` | `postuler.md` | `pipeline.md` |
+| Japanese | `modes/ja` | `kyujin.md` | `oubo.md` | `pipeline.md` |
+| Portuguese | `modes/pt` | `oferta.md` | `aplicar.md` | `pipeline.md` |
+| Russian | `modes/ru` | `oferta.md` | `apply.md` | `pipeline.md` |
+
+If a locale directory is active and the requested mode has a translated filename, read that locale's `_shared.md` plus the translated mode file. Use the default `modes/` file for modes that are not translated in that locale.
+
 ### Modes that require `_shared.md` + their mode file:
 Read `modes/_shared.md` + `modes/{mode}.md`
 
@@ -85,7 +103,7 @@ Read `modes/{mode}.md`
 Applies to: `tracker`, `deep`, `interview-prep`, `training`, `project`, `patterns`, `followup`
 
 ### Modes delegated to subagent:
-For `scan`, `apply` (with Playwright), and `pipeline` (3+ URLs): launch as Agent with the content of `_shared.md` + `modes/{mode}.md` injected into the subagent prompt.
+For `scan`, `apply` (with browser access), and `pipeline` (3+ URLs): launch as Agent with the content of `_shared.md` + `modes/{mode}.md` injected into the subagent prompt.
 
 ```
 Agent(

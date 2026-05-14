@@ -170,6 +170,7 @@ This system is designed to be customized by YOU (AI Agent). When the user asks y
 Default modes are in `modes/` (English). Additional language-specific modes are available:
 
 - **German (DACH market):** `modes/de/` — native German translations with DACH-specific vocabulary (13. Monatsgehalt, Probezeit, Kündigungsfrist, AGG, Tarifvertrag, etc.). Includes `_shared.md`, `angebot.md` (evaluation), `bewerben.md` (apply), `pipeline.md`.
+- **Danish (Denmark market):** `modes/da/` — native Danish translations with Denmark-specific vocabulary (overenskomst, pension, feriepenge, prøvetid, opsigelsesvarsel, fastansættelse, fritvalgskonto, etc.). Includes `_shared.md`, `tilbud.md` (evaluation), `ansoeg.md` (apply), `pipeline.md`.
 - **French (Francophone market):** `modes/fr/` — native French translations with France/Belgium/Switzerland/Luxembourg-specific vocabulary (CDI/CDD, convention collective SYNTEC, RTT, mutuelle, prévoyance, 13e mois, intéressement/participation, titres-restaurant, CSE, portage salarial, etc.). Includes `_shared.md`, `offre.md` (evaluation), `postuler.md` (apply), `pipeline.md`.
 - **Japanese (Japan market):** `modes/ja/` — native Japanese translations with Japan-specific vocabulary (正社員, 業務委託, 賞与, 退職金, みなし残業, 年俸制, 36協定, 通勤手当, 住宅手当, etc.). Includes `_shared.md`, `kyujin.md` (evaluation), `oubo.md` (apply), `pipeline.md`.
 
@@ -177,6 +178,11 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 1. User says "use German modes" → read from `modes/de/` instead of `modes/`
 2. User sets `language.modes_dir: modes/de` in `config/profile.yml` → always use German modes
 3. You detect a German JD → suggest switching to German modes
+
+**When to use Danish modes:** If the user is targeting Danish-language job postings, lives in Denmark, or asks for Danish output. Either:
+1. User says "use Danish modes" → read from `modes/da/` instead of `modes/`
+2. User sets `language.modes_dir: modes/da` in `config/profile.yml` → always use Danish modes
+3. You detect a Danish JD → suggest switching to Danish modes
 
 **When to use French modes:** If the user is targeting French-language job postings, lives in France/Belgium/Switzerland/Luxembourg/Quebec, or asks for French output. Either:
 1. User says "use French modes" → read from `modes/fr/` instead of `modes/`
@@ -188,7 +194,7 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 2. User sets `language.modes_dir: modes/ja` in `config/profile.yml` → always use Japanese modes
 3. You detect a Japanese JD → suggest switching to Japanese modes
 
-**When NOT to:** If the user applies to English-language roles, even at French, German, or Japanese companies, use the default English modes.
+**When NOT to:** If the user applies to English-language roles, even at Danish, French, German, or Japanese companies, use the default English modes unless the user explicitly wants local-language materials.
 
 ### Skill Modes
 
@@ -211,6 +217,8 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 | Asks about rejection patterns or wants to improve targeting | `patterns` |
 | Asks about follow-ups or application cadence | `followup` |
 
+Localized aliases are supported as prompt-level routing conventions. For Danish, treat `tilbud` as `oferta` with `modes/da/tilbud.md`, and `ansoeg` / `ansøg` as `apply` with `modes/da/ansoeg.md`.
+
 ### CV Source of Truth
 
 - `cv.md` in project root is the canonical CV
@@ -232,12 +240,12 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 
 ## Offer Verification -- MANDATORY
 
-**NEVER trust WebSearch/WebFetch to verify if an offer is still active.** ALWAYS use Playwright:
+**NEVER trust WebSearch/WebFetch to verify if an offer is still active.** ALWAYS use browser verification:
 1. `browser_navigate` to the URL
 2. `browser_snapshot` to read content
 3. Only footer/navbar without JD = closed. Title + description + Apply = active.
 
-**Exception for batch workers (headless mode):** Playwright is not available in headless pipe mode. Use WebFetch as fallback and mark the report header with `**Verification:** unconfirmed (batch mode)`. The user can verify manually later.
+**Exception for batch workers (headless mode):** an interactive browser may not be available in headless pipe mode. Use WebFetch as fallback and mark the report header with `**Verification:** unconfirmed (batch mode)`. The user can verify manually later.
 
 ---
 
@@ -271,7 +279,7 @@ When spawning headless workers for batch processing, use the appropriate command
 
 ## Stack and Conventions
 
-- Node.js (mjs modules), Playwright (PDF + scraping), YAML (config), HTML/CSS (template), Markdown (data), Canva MCP (optional visual CV)
+- Node.js (mjs modules), CloakBrowser/browser automation (PDF + scraping), YAML (config), HTML/CSS (template), Markdown (data), Canva MCP (optional visual CV)
 - Scripts in `.mjs`, configuration in YAML
 - Output in `output/` (gitignored), Reports in `reports/`
 - JDs in `jds/` (referenced as `local:jds/{file}` in pipeline.md)

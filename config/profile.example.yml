@@ -66,6 +66,40 @@ location:
   # For remote roles outside your country:
   # onsite_availability: "1 week/month in any city"
 
+# Optional: tell agents which localized mode directory to use.
+# Examples: modes/da for Denmark, modes/de for Germany/DACH,
+# modes/fr for French-speaking markets, modes/ja for Japan.
+# language:
+#   primary: "da"
+#   modes_dir: "modes/da"
+
+# Optional prompt-readable structure for multi-country searches.
+# Agents read this directly when evaluating location, language, comp,
+# sponsorship, and relocation tradeoffs.
+# country_preferences:
+#   target_countries:
+#     - country: "Denmark"
+#       cities: ["Copenhagen", "Aarhus"]
+#       languages: ["English", "Danish"]
+#       currency: "DKK"
+#       remote_policy: "Hybrid in Denmark or remote within EU"
+#       relocation_policy: "Relocation to Copenhagen or Aarhus is acceptable for the right role"
+#       work_authorization: "State whether Danish sponsorship is needed"
+#     - country: "Germany"
+#       cities: ["Berlin", "Munich", "Hamburg"]
+#       languages: ["English", "German"]
+#       currency: "EUR"
+#       remote_policy: "Remote within EU or hybrid in Germany"
+#       relocation_policy: "Relocation to Germany is acceptable for the right role"
+#       work_authorization: "No sponsorship needed / EU work authorization"
+#   country_overrides:
+#     Denmark:
+#       target_range: "DKK 850K-1.1M"
+#       minimum: "DKK 700K"
+#     Germany:
+#       target_range: "EUR 90K-130K"
+#       minimum: "EUR 75K"
+
 cv:
   output_format: "html" # "html" (default) or "latex"
   # (Optional) Canva resume design ID for visual CV generation via /career-ops pdf.

@@ -25,6 +25,14 @@ cp config/profile.example.yml config/profile.yml
 
 Edit `config/profile.yml` with your personal details: name, email, target roles, narrative, proof points.
 
+For Denmark-specific output and market handling, add:
+
+```yaml
+language:
+  primary: da
+  modes_dir: modes/da
+```
+
 ### 3. Add your CV
 
 Create `cv.md` in the project root with your full CV in markdown format. This is the source of truth for all evaluations and PDFs.

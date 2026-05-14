@@ -81,6 +81,15 @@ title_filter:
     - "KI Trainer"
     - "Dozent"
     - "Weiterbildung"
+    # -- Danish AI/ML keywords (Denmark market) --
+    - "Kunstig intelligens"
+    - "AI-ingeniør"
+    - "ML-ingeniør"
+    - "Maskinlæring"
+    - "Dataingeniør"
+    - "Platformingeniør"
+    - "Løsningsarkitekt"
+    - "Produktchef"
     # -- Engineering roles --
     - "Platform Engineer"
     - "Solutions Architect"
@@ -225,6 +234,24 @@ search_queries:
 
   - name: RemoteOK — AI/DevRel/SA
     query: 'site:remoteok.com "AI Engineer" OR "Developer Advocate" OR "Solutions Architect" OR "Forward Deployed" OR "Founding Engineer"'
+    enabled: true
+
+  # -- Denmark local boards --
+
+  - name: Jobindex — Denmark AI & Data
+    query: 'site:jobindex.dk "AI" OR "ML" OR "Data Engineer" OR "Platform Engineer" København OR Aarhus'
+    enabled: true
+
+  - name: Jobindex — Denmark Product & Solutions
+    query: 'site:jobindex.dk "Product Manager" OR "Solutions Architect" OR "Automation" København OR Aarhus'
+    enabled: true
+
+  - name: The Hub — Denmark startups
+    query: 'site:thehub.io/jobs Copenhagen OR Aarhus "Backend developer" OR "Data Science" OR "Engineer" OR "Product Management"'
+    enabled: true
+
+  - name: Work in Denmark — English roles
+    query: 'site:workindenmark.dk "Copenhagen" "Engineer" OR "Data" OR "Product" OR "AI"'
     enabled: true
 
   # -- Specialized AI / Dev-Tools / FDE boards --
@@ -673,6 +700,35 @@ tracked_companies:
     scan_method: websearch
     scan_query: 'site:jobs.ashbyhq.com/travelperk'
     notes: "Barcelona. Business travel unicorn."
+    enabled: true
+
+  # -- Denmark AI & SaaS --
+
+  - name: Pleo
+    careers_url: https://www.pleo.io/en/careers
+    scan_method: websearch
+    scan_query: 'site:pleo.io/en/careers "Our open roles"'
+    notes: "Copenhagen DK HQ. Spend management fintech with product, platform, data and AI-adjacent roles."
+    enabled: true
+
+  - name: Lunar
+    careers_url: https://jobs.lunar.app
+    scan_method: websearch
+    scan_query: 'site:jobs.lunar.app'
+    notes: "Copenhagen / Aarhus DK. Digital bank with security, data and platform hiring."
+    enabled: true
+
+  - name: Templafy
+    careers_url: https://www.templafy.com/home/about-us/careers/career-opportunities/
+    scan_method: websearch
+    scan_query: 'site:templafy.com/home/about-us/careers/career-opportunities OR site:templafy.com "Templafy" "Read more and apply"'
+    notes: "Copenhagen DK. AI-powered document generation platform with Nordic roots."
+    enabled: true
+
+  - name: Too Good To Go
+    careers_url: https://job-boards.greenhouse.io/toogoodtogo
+    api: https://boards-api.greenhouse.io/v1/boards/toogoodtogo/jobs
+    notes: "Copenhagen DK. Large product/data org with recurring tech and analytics roles."
     enabled: true
 
   # -- DACH & European AI ecosystem --

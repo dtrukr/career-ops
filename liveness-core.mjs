@@ -13,6 +13,10 @@ const HARD_EXPIRED_PATTERNS = [
   /closed on \d{1,2}\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
   /closed on (?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+\d{1,2}/i,
   /diese stelle (ist )?(nicht mehr|bereits) besetzt/i,
+  /stillingen (er )?(ikke længere tilgængelig|besat|lukket)/i,
+  /jobbet (er )?(ikke længere tilgængeligt|besat|lukket)/i,
+  /ansøgningsfristen (er )?udløbet/i,
+  /modtager ikke længere ansøgninger/i,
   /offre (expirée|n'est plus disponible)/i,
 ];
 
@@ -29,6 +33,8 @@ const APPLY_PATTERNS = [
   /\bapply\b/i,
   /\bsolicitar\b/i,
   /\bbewerben\b/i,
+  /\bansøg\b/i,
+  /\bsøg stillingen\b/i,
   /\bpostuler\b/i,
   /submit application/i,
   /easy apply/i,

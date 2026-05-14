@@ -11,7 +11,7 @@ language in this order:
    surrounding chat) in Spanish, French, German, Japanese, etc., emit the
    doc in that language.
 2. **`config/profile.yml`** — if `language.modes_dir` is set
-   (`modes/de`, `modes/fr`, `modes/ja`), prefer that locale.
+   (`modes/da`, `modes/de`, `modes/fr`, `modes/ja`), prefer that locale.
 3. **JD language** — only as a last resort, when the user prompt has no
    language signal (e.g., a bare URL with no surrounding chat).
 
